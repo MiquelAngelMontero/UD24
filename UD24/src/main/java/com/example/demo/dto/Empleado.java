@@ -3,6 +3,8 @@ package com.example.demo.dto;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name="empleado")
 public class Empleado {
 
 	@Id
@@ -24,7 +26,6 @@ public class Empleado {
 
 
 	public Empleado(Long id, String nombre, String trabajo, double salario, Date fecha) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.trabajo = trabajo;
