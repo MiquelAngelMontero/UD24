@@ -28,12 +28,12 @@ public class EmpleadoServiceIMPL implements IEmpleadoService{
 
 	@Override
 	public List<Empleado> listarEmpleadoNombre(String nombre) {
-		return IEmpleadoDAO.findByNombre(nombre);
+		return IEmpleadoDAO.findByTrabajo(nombre);
 	}
 
 	@Override
 	public Empleado actualizarEmpleado(Empleado empleado) {
-		return IEmpleadoDAO.save(empelado);
+		return IEmpleadoDAO.save(empleado);
 	}
 
 	@Override
