@@ -10,35 +10,35 @@ import com.example.demo.dao.IEmpleadoDAO;
 public class EmpleadoServiceIMPL implements IEmpleadoService{
 	
 	@Autowired
-	IEmpleadoDAO IEmpleadoDAO;
+	IEmpleadoDAO iEmpleadoDAO;
 	@Override
 	public List<Empleado> listarEmpleados() {
-		return IEmpleadoDAO.findAll();
+		return iEmpleadoDAO.findAll();
 	}
 
 	@Override
 	public Empleado guardarEmpleado(Empleado empleado) {
-		return IEmpleadoDAO.save(empleado);
+		return iEmpleadoDAO.save(empleado);
 	}
 
 	@Override
 	public Empleado empleadoXID(Long id) {
-		return IEmpleadoDAO.findById(id).get();
+		return iEmpleadoDAO.findById(id).get();
 	}
 
 	@Override
 	public List<Empleado> listarEmpleadoNombre(String nombre) {
-		return IEmpleadoDAO.findByTrabajo(nombre);
+		return iEmpleadoDAO.findByTrabajo(nombre);
 	}
 
 	@Override
 	public Empleado actualizarEmpleado(Empleado empleado) {
-		return IEmpleadoDAO.save(empleado);
+		return iEmpleadoDAO.save(empleado);
 	}
 
 	@Override
 	public void eliminarEmpleado(Long id) {
-		IEmpleadoDAO.deleteById(id);
+		iEmpleadoDAO.deleteById(id);
 	}
 	
 }
