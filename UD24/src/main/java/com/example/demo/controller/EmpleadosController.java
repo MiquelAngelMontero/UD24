@@ -1,14 +1,19 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-import antlr.collections.List;
+import com.example.demo.dto.Empleado;
+import com.example.demo.service.EmpleadoServiceIMPL;
 
+@RestController
+@RequestMapping("/api")
 public class EmpleadosController {
 
 	@Autowired
-	EmpleadoServiceImpl EmpleadoServideImpl;
+	EmpleadoServiceIMPL EmpleadoServideImpl;
 	
 	@GetMapping("/Empleados")
 	public List<Empleado> listarEmpleados(){
@@ -18,7 +23,7 @@ public class EmpleadosController {
 	//listar Empleados por campo nombre
 	@GetMapping("/Empleados/nombre/{nombre}")
 	public List<Empleado> listarEmpleadoNombre(@PathVariable(name="nombre") String nombre) {
-	    return EmpleadoServideImpl.listarEmpleadoNomnbre(nombre);
+	    return EmpleadoServideImpl.listarEmpleadoNombre(nombre);
 	}
 	
 	
@@ -34,7 +39,7 @@ public class EmpleadosController {
 		
 		Empleado Empleado_xid= new Empleado();
 		
-		Empleado_xid=EmpleadoServideImpl.EmpleadoXID(id);
+		Empleado_xid=EmpleadoServideImpl.empleadoXID(id);
 		
 		System.out.println("Empleado XID: "+Empleado_xid);
 		
@@ -47,12 +52,12 @@ public class EmpleadosController {
 		Empleado Empleado_seleccionado= new Empleado();
 		Empleado Empleado_actualizado= new Empleado();
 		
-		Empleado_seleccionado= EmpleadoServideImpl.EmpleadoXID(id);
+		Empleado_seleccionado= EmpleadoServideImpl.empleadoXID(id);
 		
+		Empleado_seleccionado.setId(Empleado.getId());
 		Empleado_seleccionado.setNombre(Empleado.getNombre());
-		Empleado_seleccionado.setApellido(Empleado.getApellido());
-		Empleado_seleccionado.setDireccion(Empleado.getDireccion());
-		Empleado_seleccionado.setDni(Empleado.getDni());
+		Empleado_seleccionado.setTrabajo(Empleado.getTrabajo());
+		Empleado_seleccionado.setSalario(Empleado.getSalario());
 		Empleado_seleccionado.setFecha(Empleado.getFecha());
 		
 		Empleado_actualizado = EmpleadoServideImpl.actualizarEmpleado(Empleado_seleccionado);
